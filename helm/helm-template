@@ -1,0 +1,39 @@
+---
+# Source: TestRuby/templates/deploy.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: testruby
+  labels:
+    app: restruby
+    release: RELEASE-NAME
+    heritage: Tiller
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: restruby
+        release: RELEASE-NAME
+        helm_revision: "0"
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: testruby
+          imagePullPolicy: Always
+          image: nginx
+          ports:
+            - containerPort: 80
+              name: http
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 200m
+              memory: 128Mi
+            requests:
+              cpu: 200m
+              memory: 128Mi
+          env:
+            name: NOTHING
+            value: NOTHING
+
