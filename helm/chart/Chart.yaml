@@ -1,0 +1,12 @@
+name: TestRuby
+description: Test Ruby
+version: 0.1.0
+kubeVersion: ">=1.2.0"
+keywords:
+  - ruby
+home: https://github.com/vkropotko/ruby-hello-world.git
+sources:
+  - https://github.com/vkropotko/ruby-hello-world.git
+maintainers:
+  - name: vkropotko
+    email: vkropotko@riskfocus.com

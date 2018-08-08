@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: testruby
+  labels:
+    app: restruby
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: restruby
+        release: {{ .Release.Name }}
+        helm_revision: {{ .Release.Revision | quote }}
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: testruby
+          imagePullPolicy: Always
+          image: nginx
+          ports:
+            - containerPort: 80
+              name: http
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 200m
+              memory: 128Mi
+            requests:
+              cpu: 200m
+              memory: 128Mi
+          env:
+            name: NOTHING
+            value: NOTHING
